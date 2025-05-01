@@ -40,7 +40,6 @@ class GroceryItemForm(FlaskForm):
             Length(min=3, max=80)
         ]
     )
-
     price = FloatField(
         'Price',
         validators=[
@@ -48,7 +47,6 @@ class GroceryItemForm(FlaskForm):
             NumberRange(min=0, message="Price must be non-negative")
         ]
     )
-
     category = SelectField(
         'Category',
         choices=[
@@ -61,7 +59,6 @@ class GroceryItemForm(FlaskForm):
         ],
         validators=[DataRequired()]
     )
-
     photo_url = StringField(
         'Photo URL',
         validators=[
@@ -70,13 +67,11 @@ class GroceryItemForm(FlaskForm):
             Length(max=300)
         ]
     )
-
     store = QuerySelectField(
         'Store',
         query_factory=lambda: GroceryStore.query.all(),
         get_label='title',
         allow_blank=False
     )
-
     submit = SubmitField('Submit')
     
